@@ -23,7 +23,6 @@ class GeoIPCountry
     private $PackageName = self::DOWNLOADED_FILE;
     private $UpdateUrl = self::DOWNLOAD_LINK;
 
-//https://github.com/barracudanetworks/ArchiveStream-php
     public function __construct()
     {
         $this->PackageLocation = realpath($this->getStoragePath());
