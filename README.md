@@ -39,6 +39,10 @@ echo 'Country Code: '.$countryCode;
 
 ```php
 $IP2Country->Admin()->updateDatabase();
+/*
+* NOTE: calling the Admin() method help enter in edit Mode;
+* the command: $IP2Country->updateDatabase(); will have no effect
+*/
 ```
 
 ### Compatibility:
