@@ -35,7 +35,7 @@ $CountryCode = $IP2Country->resolve($ip);
 echo 'Country Code: '.$countryCode;
 ```
 
-### GRetrieving Country name:
+### Retrieving Country name:
 
 Because one of my publications already deals with the recovery of a country's name from its ISO code. 
 I made the choice in this project to limit myself to the only search of the country's ALPHA2 ISO code from a given ip address. 
