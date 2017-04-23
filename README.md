@@ -46,7 +46,7 @@ and pass the result of the previous command as follows:
 
 ```php
 $ip = '63.140.250.97';
-$CountryName ='n/a'
+$CountryName ='n/a';
 if(!$IP2Country->isReservedIP($ip))
 {
   $CountryCode = $IP2Country->resolve($ip);
