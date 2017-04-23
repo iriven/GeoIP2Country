@@ -65,6 +65,10 @@ $IP2Country->Admin()->updateDatabase();
 - [x] IPV4
 - [ ] IPV6
 
+### TODO:
+
+- Implement IPV6 Supports
+
 ## Authors
 
 * **Alfred TCHONDJO** - *Project Initiator* - [iriven France](https://www.facebook.com/Tchalf)
