@@ -43,7 +43,7 @@ $IP2Country->Admin()->updateDatabase();
 
 ## Authors
 
-* **Alfred TCHONDJO** - *Project Initiator* - [iriven](https://www.facebook.com/Tchalf)
+* **Alfred TCHONDJO** - *Project Initiator* - [iriven France](https://www.facebook.com/Tchalf)
 
 ## License
 
