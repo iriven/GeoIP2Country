@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: sjhc1170
+ * User: Iriven France
  * Date: 20/04/2017
  * Time: 08:55
  */
@@ -129,7 +129,7 @@ class GeoIPCountry
     public function isReservedIP($ip=null)
     {
         if($ip) $this->resolve($ip);
-        return is_null($this->IsoCode) OR $this->IsoCode === 'ZZ';
+        return is_null($this->IsoCode) OR strcasecmp($this->IsoCode,'ZZ') == 0 ;
     }
     /**
      * @return $this
@@ -189,6 +189,7 @@ class GeoIPCountry
             $ip = $_SERVER['REMOTE_ADDR'];
         return $ip;
     }
+    
     public function updateDatabase()
     {
         if($this->EditModeEnabled)
@@ -251,23 +252,26 @@ class GeoIPCountry
             !$file  OR $this->PackageName = pathinfo(realpath($file), PATHINFO_BASENAME);
             try{
                 $Archive = realpath($this->PackageLocation.self::DS.$this->PackageName);
-                $ArchiveExt = pathinfo($Archive, PATHINFO_EXTENSION);
-                if(strcasecmp($ArchiveExt,'zip') == 0)
-                    throw new \Exception('The Downloaded package must be a zip file: "'.$ArchiveExt.'" file given');
-                set_time_limit(0);
-                $zip = new ZipArchive;
-                if ($zip->open($Archive) !== false)
+                if(file_exists($Archive))
                 {
-                    for($i = 0; $i < $zip->numFiles; $i++)
+                    $ArchiveExt = pathinfo($Archive, PATHINFO_EXTENSION);
+                    if(strcasecmp($ArchiveExt,'zip') == 0)
+                        throw new \Exception('The Downloaded package must be a zip file: "'.$ArchiveExt.'" file given');
+                    set_time_limit(0);
+                    $zip = new ZipArchive;
+                    if ($zip->open($Archive) !== false)
                     {
-                        $filename = $zip->getNameIndex($i);
-                        $fileExt = pathinfo($filename,PATHINFO_EXTENSION);
-                        if(strcasecmp($fileExt,'csv') == 0)
-                            copy('zip://'.$Archive.'#'.$filename, $this->getExtractedFile());
+                        for($i = 0; $i < $zip->numFiles; $i++)
+                        {
+                            $filename = $zip->getNameIndex($i);
+                            $fileExt = pathinfo($filename,PATHINFO_EXTENSION);
+                            if(strcasecmp($fileExt,'csv') == 0)
+                                copy('zip://'.$Archive.'#'.$filename, $this->getExtractedFile());
+                        }
+                        $zip->close();
                     }
-                    $zip->close();
+                    if(file_exists($Archive)) @unlink($Archive);
                 }
-                if(file_exists($Archive)) @unlink($Archive);
             }
             catch (\Exception $e)
             {
