@@ -23,8 +23,9 @@ To utilize GeoIPCountry, first import and require GeoIPCountry.php file in your 
 require_once 'GeoIPCountry.php';
 $IP2Country = new \iriven\GeoIPCountry(); //Initialisation
 /* 
-* NOTE: Initialisation may take a while if GeoIP data directory is missing or is corrupted (some file missing). 
-* If so it will rebuild it, dont close the page until it finished.
+* NOTE: Initialisation may take a while if GeoIP data directory is missing or is corrupted (some files missing). 
+* If so, it will download the last available zip package form software77 website and rebuild GeoIP data directory files,
+* dont close the page until it finished.
 */
 ```
 
