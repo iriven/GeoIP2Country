@@ -45,9 +45,11 @@ So, to retrieve the country name (and much more), you must instantiate the "Worl
 and pass the result of the previous command as follows:
 
 ```php
+$ip = '63.140.250.97';
 $CountryName ='n/a'
-if(!$IP2Country->isReservedIP())
+if(!$IP2Country->isReservedIP($ip))
 {
+  $CountryCode = $IP2Country->resolve($ip);
   require_once 'WorldCountriesDatas.php';
   $DataProvider = new \Iriven\WorldCountriesDatas(); 
   $CountryName = $DataProvider->getCountryName($CountryCode);
