@@ -1,6 +1,6 @@
 # Iriven PHP GeoIPCountry Library
 
-A PHP IPV4 Address Geolocation library to help you identify visitors geographical location. 
+A PHP IP Address Geolocation library to help you identify visitors geographical location. 
 This component is Build with an eye to keeping it as lightweight and lookups as fast as possible. 
 And there are no external requests being made during runtime. So, if you need to get your website visitor's 
 country and you don't want to use any API then this is the best solution for you.
@@ -40,6 +40,11 @@ echo 'Country Code: '.$countryCode;
 ```php
 $IP2Country->Admin()->updateDatabase();
 ```
+
+### Compatibility:
+
+- [x] IPV4
+- [ ] IPV6
 
 ## Authors
 
