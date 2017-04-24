@@ -55,6 +55,18 @@ if(!$IP2Country->isReservedIP($ip))
   $CountryName = $DataProvider->getCountryName($CountryCode);
 }
 ```
+or as follows:
+
+```php
+$ip = '63.140.250.97';
+$CountryName = $IP2Country->resolve($ip)?:'n/a';
+if(!$IP2Country->isReservedIP())  //isReservedIP() method called with no parameter
+{
+  require_once 'WorldCountriesDatas.php';
+  $DataProvider = new \Iriven\WorldCountriesDatas(); 
+  $CountryName = $DataProvider->getCountryName($CountryCode);
+}
+```
 
 ### Updating GeoIP datas:
 
