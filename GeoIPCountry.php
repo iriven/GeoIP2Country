@@ -27,7 +27,7 @@ class GeoIPCountry
     {
         $this->PackageLocation = realpath($this->getStoragePath());
         $this->DataLocation  = realpath($this->getStoragePath(false));
-        $this->preload();
+        $this->prepareLookup();
         return $this;
     }
 
@@ -134,7 +134,7 @@ class GeoIPCountry
     /**
      * @return $this
      */
-    private function preload()
+    private function prepareLookup()
     {
         if(count(glob($this->DataLocation.'/[0-9]*.php'))!==256)
         {
