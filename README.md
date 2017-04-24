@@ -40,7 +40,7 @@ echo 'Country Code: '.$countryCode;
 ### Retrieving Country name:
 
 Because one of my publications already deals with the recovery of a country's name from its ISO code. 
-I made the choice in this project to limit myself to the only search of the country's ALPHA2 ISO code from a given ip address. 
+I chose in this project to limit myself to the only search of the country's ALPHA2 ISO code from a given ip address. 
 So, to retrieve the country name (and much more), you must instantiate the "WorldCountriesDatas" class available form [HERE](https://github.com/iriven/WorldCountriesDatas), 
 and pass the result of the previous command as follows:
 
