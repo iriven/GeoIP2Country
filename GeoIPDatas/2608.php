@@ -1,0 +1,23 @@
+<?php
+return [
+['2608:1000::', '2608:1fff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:2000::', '2608:3fff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:4000::', '2608:43ff:ffff:ffff:ffff:ffff:ffff:ffff', 'US'],
+['2608:400::', '2608:7ff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:4400::', '2608:47ff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:4800::', '2608:4fff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:5000::', '2608:5fff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:6000::', '2608:7fff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:8000::', '2608:83ff:ffff:ffff:ffff:ffff:ffff:ffff', 'US'],
+['2608:800::', '2608:fff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:8400::', '2608:87ff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:8800::', '2608:8fff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:9000::', '2608:9fff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608::', '2608:3ff:ffff:ffff:ffff:ffff:ffff:ffff', 'US'],
+['2608:a000::', '2608:bfff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:c000::', '2608:c3ff:ffff:ffff:ffff:ffff:ffff:ffff', 'US'],
+['2608:c400::', '2608:c7ff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:c800::', '2608:cfff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:d000::', '2608:dfff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+['2608:e000::', '2608:ffff:ffff:ffff:ffff:ffff:ffff:ffff', ''],
+];
