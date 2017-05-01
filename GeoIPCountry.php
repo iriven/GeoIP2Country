@@ -10,7 +10,10 @@ namespace Iriven;
 use ZipArchive;
 use SplFileObject;
 
-
+/**
+ * Class GeoIPCountry
+ * @package Iriven\GeoIPCountry
+ */
 class GeoIPCountry
 {
     const DOWNLOAD_LINK = 'http://software77.net/geo-ip/?DL=%s';
@@ -179,33 +182,6 @@ class GeoIPCountry
         return $decimal;
     }
     /**
-     * Compare 2 IP Long
-     *
-     * @param mixed  $IPLong    IP Long
-     * @param mixed  $IPLongRef    IP Long
-     * @param string $operator Operator
-     *
-     * @return boolean
-     */
-    protected function IPLongCompare($IPLong, $IPLongRef, $operator = '=')
-    {
-        $operators = preg_split('//', $operator);
-        $diff   = $IPLong - $IPLongRef;
-        foreach ($operators as $operator)
-        {
-            switch(true)
-            {
-                case ( ( $operator === '=' ) && ( $diff == 0 ) ):
-                case ( ( $operator === '<' ) && ( $diff < 0 ) ):
-                case ( ( $operator === '>' ) && ( $diff > 0 ) ):
-                case ( ( $operator === '>=' ) && ( $diff >= 0 ) ):
-                case ( ( $operator === '<=' ) && ( $diff <= 0 ) ):
-                    return true;
-            }
-        }
-        return false;
-    }
-    /**
      * Convert an IP address from decimal format to presentation format
      *
      * @param $decimal
@@ -243,11 +219,7 @@ class GeoIPCountry
     public function isReservedIP($ip=null)
     {
         if($ip) $this->resolve($ip);
-<<<<<<< HEAD
         return !$this->IsoCode OR strcasecmp($this->IsoCode,'ZZ') == 0 ;
-=======
-        return is_null($this->IsoCode) OR strcasecmp($this->IsoCode,'ZZ') == 0 ;
->>>>>>> origin/master
     }
     /**
      * @return $this
@@ -324,13 +296,9 @@ class GeoIPCountry
             $ip = substr($ip, 0, ($CommaPos - 1));
         return $ip?:'0.0.0.0';
     }
-<<<<<<< HEAD
     /**
      * @return $this
      */
-=======
-    
->>>>>>> origin/master
     public function updateDatabase()
     {
         if($this->EditModeEnabled)
@@ -407,7 +375,6 @@ class GeoIPCountry
         {
             !$file  OR $this->PackageName = pathinfo(realpath($file), PATHINFO_FILENAME);
             try{
-<<<<<<< HEAD
                 $Packages = array_filter(glob($this->PackageLocation.self::DS.$this->PackageName.'*.{gz,zip}',GLOB_BRACE), 'is_file');
                 if($Packages)
                 {
@@ -448,28 +415,6 @@ class GeoIPCountry
                         endswitch;
                        // if(file_exists($PackageFile)) @unlink($PackageFile);
                     endforeach;
-=======
-                $Archive = realpath($this->PackageLocation.self::DS.$this->PackageName);
-                if(file_exists($Archive))
-                {
-                    $ArchiveExt = pathinfo($Archive, PATHINFO_EXTENSION);
-                    if(strcasecmp($ArchiveExt,'zip') == 0)
-                        throw new \Exception('The Downloaded package must be a zip file: "'.$ArchiveExt.'" file given');
-                    set_time_limit(0);
-                    $zip = new ZipArchive;
-                    if ($zip->open($Archive) !== false)
-                    {
-                        for($i = 0; $i < $zip->numFiles; $i++)
-                        {
-                            $filename = $zip->getNameIndex($i);
-                            $fileExt = pathinfo($filename,PATHINFO_EXTENSION);
-                            if(strcasecmp($fileExt,'csv') == 0)
-                                copy('zip://'.$Archive.'#'.$filename, $this->getExtractedFile());
-                        }
-                        $zip->close();
-                    }
-                    if(file_exists($Archive)) @unlink($Archive);
->>>>>>> origin/master
                 }
             }
             catch (\Exception $e)
