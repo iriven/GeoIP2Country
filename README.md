@@ -63,7 +63,7 @@ $IP2Country->Admin()->updateDatabase();
 ### Compatibility:
 
 - [x] IPV4
-- [ ] IPV6
+- [x] IPV6
 
 ## Authors
 
