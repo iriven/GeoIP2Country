@@ -413,7 +413,7 @@ class GeoIPCountry
                             throw new \Exception('The Downloaded package must be a zip or gz file: "'.$PackageExt.'" file given');
                             break;
                         endswitch;
-                       // if(file_exists($PackageFile)) @unlink($PackageFile);
+                        if(file_exists($PackageFile)) @unlink($PackageFile);
                     endforeach;
                 }
             }
