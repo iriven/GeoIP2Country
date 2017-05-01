@@ -75,7 +75,7 @@ This project is licensed under the GNU General Public License V3 - see the [LICE
 
 ## Acknowledgments
 
-* This project uses GeoIp data by Software77, available from http://software77.net/geo-ip/?DL=2
+* This project uses GeoIp data by Software77, available from [here](http://software77.net/geo-ip)
 
 ## Disclaimer
 
