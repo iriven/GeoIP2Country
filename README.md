@@ -9,7 +9,7 @@ The project include methods to quickly update the files providing ip ranges with
 
 ## Requirements
 
-php_curl, ziparchive (for install or update)
+php_curl, zlib, ziparchive (for install or update)
 
 ## Usage:
 
