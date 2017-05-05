@@ -132,16 +132,16 @@ class GeoIPCountry
     private function getStoragePath($isArchive=true)
     {
         $tmp = ini_get('upload_tmp_dir')?:sys_get_temp_dir ();
-        $isArchive OR $tmp = rtrim(__DIR__, self::DS).self::DS.'GeoIPDatas';
+        $isArchive OR $tmp = rtrim(__DIR__, self::DS);
         try{
             if (!is_writeable($tmp))
-                throw new \Exception(sprintf('Download directory is not writable: %s', $tmp));
+                throw new \Exception(sprintf('The required destination path is not writable: %s', $tmp));
         }
         catch(\Exception $e)
         {
             trigger_error($e->getMessage(),E_USER_ERROR);
         }
-        $isArchive AND $tmp .= self::DS.'GeoIPCountry';
+        $tmp .= self::DS.($isArchive? 'GeoIPCountry' : 'GeoIPDatas');
         if(!is_dir($tmp)) mkdir($tmp,'0755', true);
            return $tmp;
     }
