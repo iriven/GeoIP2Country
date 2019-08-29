@@ -361,6 +361,7 @@ class GeoIPCountry
                     if(file_exists($ExtractedFile)) @unlink($ExtractedFile);
                 endforeach;
             }
+            $this->EditModeEnabled = false;
         }
         return $this;
     }
