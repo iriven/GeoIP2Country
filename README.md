@@ -1,6 +1,7 @@
 # Iriven PHP GeoIPCountry Library
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
+[![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://github.com/iriven/GeoIPCountry/blob/master/LICENSE)
 
 A PHP IP Address Geolocation library to help you identify visitors geographical location. 
 This component is Build with an eye to keeping it as lightweight and lookups as fast as possible. 
