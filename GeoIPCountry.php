@@ -60,7 +60,7 @@ class GeoIPCountry
                 foreach ($this->IpPackageID AS $ipVersion=>$packageId)
                 {
                     $Archive = $this->PackageLocation.self::DS.$this->PackageName;
-                    $Archive .=($ipVersion==='ipv6')?'6.gz':'.gz';
+                    $Archive .=($ipVersion==='ipv6')?'6R.csv.gz':'.csv.gz';
                     if(!file_exists($Archive))
                     {
                         $url = sprintf($this->UpdateUrl,$packageId);
