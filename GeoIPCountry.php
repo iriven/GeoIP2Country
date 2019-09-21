@@ -19,21 +19,21 @@ class GeoIPCountry
     const DOWNLOAD_LINK = 'http://software77.net/geo-ip/?DL=%s';
     const DOWNLOADED_FILE = 'GeoIP';
     const DS = DIRECTORY_SEPARATOR;
-    private $DataLocation = null;
+    private $DatabaseLocation = null;
     private $EditModeEnabled = false;
     private $IsoCode = null;
-    private $IpPackageID = ['ipv4'=>'1','ipv6'=>'7'];
-    private $PackageLocation = null;
+    private $PackageID = ['ipv4'=>'1','ipv6'=>'7'];
+    private $DownloadLocation = null;
     private $PackageName = self::DOWNLOADED_FILE;
-    private $UpdateUrl = self::DOWNLOAD_LINK;
+    private $Endpoint = self::DOWNLOAD_LINK;
 
     /**
      * GeoIPCountry constructor.
      */
     public function __construct()
     {
-        $this->PackageLocation = realpath($this->getStoragePath());
-        $this->DataLocation  = realpath($this->getStoragePath(false));
+        $this->DownloadLocation = $this->getArchiveLocation();
+        $this->DatabaseLocation  = $this->getGeoIPDatasLocation();
         $this->prepareLookup();
         return $this;
     }
@@ -57,13 +57,13 @@ class GeoIPCountry
             set_time_limit(0); //prevent timeout
             try
             {
-                foreach ($this->IpPackageID AS $ipVersion=>$packageId)
+                foreach ($this->PackageID AS $ipVersion=>$pkgid)
                 {
-                    $Archive = $this->PackageLocation.self::DS.$this->PackageName;
+                    $Archive = $this->DownloadLocation.self::DS.$this->PackageName;
                     $Archive .=($ipVersion==='ipv6')?'6R.csv.gz':'.csv.gz';
                     if(!file_exists($Archive))
                     {
-                        $url = sprintf($this->UpdateUrl,$packageId);
+                        $url = sprintf($this->Endpoint,$pkgid);
                         $curl=curl_init();
                         $Handler = fopen($Archive,'w+');
                         curl_setopt($curl, CURLOPT_URL, str_replace(' ','%20',$url));
@@ -85,6 +85,7 @@ class GeoIPCountry
         return $this;
     }
 
+
     /**
      * If IPV6, Returns the IP in it's fullest format.
      * @example
@@ -105,10 +106,20 @@ class GeoIPCountry
         return $Ip;
     }
     /**
+     * @return bool|string
+     */
+    private function getArchiveLocation(){
+        return realpath($this->getLocation());
+    }
+
+    private function getGeoIPDatasLocation(){
+        return realpath($this->getLocation(false));
+    }
+    /**
      * @param $ip
      * @return null|string
      */
-    private function getIPRangeProviderFile($ip)
+    private function getProviderFilename($ip)
     {
         try
         {
@@ -129,7 +140,7 @@ class GeoIPCountry
      * @param bool $isArchive
      * @return string
      */
-    private function getStoragePath($isArchive=true)
+    private function getLocation($isArchive=true)
     {
         $tmp = ini_get('upload_tmp_dir')?:sys_get_temp_dir ();
         $isArchive OR $tmp = rtrim(__DIR__, self::DS);
@@ -226,12 +237,8 @@ class GeoIPCountry
      */
     private function prepareLookup()
     {
-        $totalRangeFiles = count(glob($this->DataLocation.'/*[0-9]*.php'));
-        if($totalRangeFiles < 332)
-        {
-            $this->Admin()->updateDatabase();
-            $this->EditModeEnabled = false;
-        }
+        $totalRangeFiles = count(glob($this->DatabaseLocation.'/*[0-9]*.php'));
+        if($totalRangeFiles < 332) $this->Admin()->updateDatabase();
         return $this;
     }
     /**
@@ -247,9 +254,9 @@ class GeoIPCountry
             $ip = $this->ExpandIPAddress($ip);
             if(!filter_var($ip,FILTER_VALIDATE_IP,[FILTER_FLAG_IPV4|FILTER_FLAG_IPV6]))
                 throw new \Exception('Invalid IP given');
-            $ipFilename = $this->getIPRangeProviderFile($ip);
+            $ipFilename = $this->getProviderFilename($ip);
             $ipLong = $this->ip2long($ip);
-            $ipFilePath = realpath($this->DataLocation.self::DS.$ipFilename);
+            $ipFilePath = realpath($this->DatabaseLocation.self::DS.$ipFilename);
             if(!file_exists($ipFilePath))
                 throw new \Exception('IP Ranges provider file not found');
             $IpRanges = include $ipFilePath;
@@ -305,7 +312,7 @@ class GeoIPCountry
         {
             $this->DownloadPackage()->ExtractArchive();
             $ExtractedFileName = pathinfo($this->PackageName,PATHINFO_FILENAME);
-            $ExtractedFiles = glob($this->PackageLocation.self::DS.$ExtractedFileName.'*.csv');
+            $ExtractedFiles = glob($this->DownloadLocation.self::DS.$ExtractedFileName.'*.csv');
             if($ExtractedFiles)
             {
                 set_time_limit(0); //prevent timeout
@@ -335,7 +342,7 @@ class GeoIPCountry
                                 $filename = current(explode('.',$this->long2ip($ipMin))).'.php';
                                 break;
                         endswitch;
-                        $dataFile = $this->PackageLocation.self::DS.$filename;
+                        $dataFile = $this->DownloadLocation.self::DS.$filename;
                         $files[] = $filename;
                         $fileContent = null;
                         if(!file_exists($dataFile))
@@ -349,8 +356,8 @@ class GeoIPCountry
                     if($files):
                         foreach ($files as $file)
                         {
-                            $source = $this->PackageLocation.self::DS.$file;
-                            $destination = $this->DataLocation.self::DS.$file;
+                            $source = $this->DownloadLocation.self::DS.$file;
+                            $destination = $this->DatabaseLocation.self::DS.$file;
                             if(!file_exists($source)) continue;
                             $sourceContent = '];';
                             file_put_contents($source, $sourceContent,FILE_APPEND | LOCK_EX);
@@ -376,7 +383,7 @@ class GeoIPCountry
         {
             !$file  OR $this->PackageName = pathinfo(realpath($file), PATHINFO_FILENAME);
             try{
-                $Packages = array_filter(glob($this->PackageLocation.self::DS.$this->PackageName.'*.{gz,zip}',GLOB_BRACE), 'is_file');
+                $Packages = array_filter(glob($this->DownloadLocation.self::DS.$this->PackageName.'*.{gz,zip}',GLOB_BRACE), 'is_file');
                 if($Packages)
                 {
                     $bufferSize = 4096;
@@ -385,7 +392,7 @@ class GeoIPCountry
                         $PackageExt = pathinfo($PackageFile, PATHINFO_EXTENSION);
                     if(!in_array(strtolower($PackageExt),['zip','gz'],true)) continue;
                         $ExtractedFilename = pathinfo($PackageFile,PATHINFO_FILENAME).'.csv';
-                        $ExtractedFile = realpath($this->PackageLocation).self::DS.$ExtractedFilename;
+                        $ExtractedFile = realpath($this->DownloadLocation).self::DS.$ExtractedFilename;
                     switch ($PackageExt):
                         case (strcasecmp($PackageExt,'gz') == 0):
                             $file = gzopen($PackageFile, 'rb');
