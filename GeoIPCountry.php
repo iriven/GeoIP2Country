@@ -60,7 +60,7 @@ class GeoIPCountry
                 foreach ($this->PackageID AS $ipVersion=>$pkgid)
                 {
                     $Archive = $this->DownloadLocation.self::DS.$this->PackageName;
-                    $Archive .=($ipVersion==='ipv6')?'6R.csv.gz':'.csv.gz';
+                    $Archive .=($ipVersion==='ipv6')?'6.gz':'.gz';
                     if(!file_exists($Archive))
                     {
                         $url = sprintf($this->Endpoint,$pkgid);
@@ -112,6 +112,9 @@ class GeoIPCountry
         return realpath($this->getLocation());
     }
 
+    /**
+     * @return bool|string
+     */
     private function getGeoIPDatasLocation(){
         return realpath($this->getLocation(false));
     }

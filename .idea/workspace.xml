@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="003c20f4-d234-4e69-8528-222d1339d5fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GeoIPCountry.php" beforeDir="false" afterPath="$PROJECT_DIR$/GeoIPCountry.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,22 +20,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="php" value="1" />
+          <entry key="php" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="1" />
+          <entry key="PHP" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="70" />
+          <entry key="php" value="76" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="70" />
+          <entry key="PHP" value="76" />
         </counts>
       </usages-collector>
     </session>
@@ -47,9 +45,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GeoIPCountry.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4046">
-              <caret line="243" column="7" lean-forward="true" selection-start-line="243" selection-start-column="7" selection-end-line="243" selection-end-column="7" />
+            <state relative-caret-position="349">
+              <caret line="29" column="7" lean-forward="true" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
               <folding>
+                <element signature="e#6#90#0#PHP" expanded="true" />
                 <element signature="e#110#125#0#PHP" expanded="true" />
               </folding>
             </state>
@@ -102,6 +101,11 @@
               <item name="GeoIPCountry" type="b2602c69:ProjectViewProjectNode" />
               <item name="GeoIPCountry" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="GeoIPCountry" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GeoIPCountry" type="462c0819:PsiDirectoryNode" />
+              <item name="GeoIPDatas" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -136,19 +140,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1569057183050</updated>
-      <workItem from="1569057185270" duration="3947000" />
+      <workItem from="1569057185270" duration="6488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3947000" />
+    <option name="totallyTimeSpent" value="6488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1616" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15381558" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15381558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
@@ -174,12 +177,65 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/2A04.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16161" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/2C00.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/2C0F.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/2C0E.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/2A08.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/2A07.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/2A0A.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/2803.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/A000.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/8000.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/4000.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/FC00.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/FE80.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/FEC0.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoIPDatas/FF00.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/GeoIPCountry.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4046">
-          <caret line="243" column="7" lean-forward="true" selection-start-line="243" selection-start-column="7" selection-end-line="243" selection-end-column="7" />
+        <state relative-caret-position="349">
+          <caret line="29" column="7" lean-forward="true" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
           <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
             <element signature="e#110#125#0#PHP" expanded="true" />
           </folding>
         </state>
