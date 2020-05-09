@@ -85,7 +85,6 @@ class GeoIPCountry
         return $this;
     }
 
-
     /**
      * If IPV6, Returns the IP in it's fullest format.
      * @example
