@@ -24,7 +24,10 @@ intervention (for donors only).
 #### NOTE:
 **In order to encourage people to support this project, database update components are reserved to
 donors only and are not included in this repo. Any donor will receive a full version of this software,
-which help him gain the ability to make his GEOIP database stay up to date.**
+which help him gain the ability to make his GEOIP database stay up to date.
+
+Donate here: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
+**
 
 ## Requirements
 
