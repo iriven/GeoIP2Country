@@ -93,8 +93,10 @@ try
 }
 
 /*
-* NOTE: In order to encourage people to support this project, database update modules are reserved for donors only and are not included in this repo.
-* Any donor will receive in return a complete version of this software, with the possibility of updating the GEOIP database as desired.
+* NOTE: In order to encourage people to support this project, database update
+* modules are reserved for donors only and are not included in this repo.
+* Any donor will receive in return a complete version of this software,
+* with the possibility of updating the GEOIP database as desired.
 */
 
 ```
