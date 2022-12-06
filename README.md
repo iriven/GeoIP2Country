@@ -16,7 +16,7 @@ intervention (for donors only).
 - Complete refactoring and optimization of processing algorithms
 - A new database engine (combining security and efficiency)
 - A new component dedicated to updating the database?
-- A repository based on statistical data from ICANN (Internet Corporation for Assigned Names and Numbers) regularly updated
+- A repository based on statistical data from ICANN (Internet Corporation for Assigned Names and Numbers)
 
 #### NOTE:
 **In order to encourage people to support this project, database update modules are reserved to
