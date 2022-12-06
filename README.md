@@ -1,6 +1,9 @@
 # PHP GeoIP2Country PRO (v2.0.2)
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
+[![Build Status](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/badges/build.png?b=master)](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://github.com/geolocation/GeoIP2Country/blob/master/LICENSE)
 
 A PHP IP Address Geolocation library to help you identify visitors geographical location.
