@@ -1,43 +1,60 @@
-# Iriven PHP GeoIPCountry Library
+# PHP GeoIP2Country PRO
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
-[![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://github.com/geolocation/GeoIPCountry/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://github.com/geolocation/GeoIP2Country/blob/master/LICENSE)
 
 A PHP IP Address Geolocation library to help you identify visitors geographical location.
 This component is Build with an eye to keeping it as lightweight and lookups as fast as possible.
 And there are no external requests being made during runtime. So, if you need to get your website visitor's
 country and you don't want to use any API then this is the best solution for you.
-The project include methods to quickly update the files providing GEOIP DATA with the least possible human intervention.
+The project include methods to quickly update the files providing GEOIP DATA with the least possible human intervention (for donors only).
 
 
 ## Requirements
 
-php_curl, zlib, ziparchive (for install or update)
+pdo_sqlite, zlib, php_curl (for data update)
 
 ## Usage:
 
 These instructions will get you a copy of the project up and running on your local machine.
 
-### Installation And Initialisation
+### Installation And Initialisation (using Composer autoload)
 
-To utilize GeoIPCountry, first import and require GeoIPCountry.php file in your project.
+To utilize GeoIP2Country, first import and require GeoIP2Country.php file in your project.
 
 ```php
-require_once 'GeoIPCountry.php';
-$IP2Country = new \geolocation\GeoIPCountry(); //Initialisation
-/*
-* NOTE: Initialisation may take a while if GeoIP data directory is missing or is corrupted (some files missing).
-* If so, it will download the last available zip package from software77 website and rebuild GeoIP data directory files,
-* dont close the page until it finished.
-*/
+
+require __DIR__ . '/vendor/autoload.php';
+
+try
+{
+    $IP2Country = new \geolocation\GeoIP2Country();
+
+} catch (\Throwable $th) {
+    trigger_error($th->getMessage(), E_USER_ERROR);
+}
+
 ```
 
 ### Getting Country code from given IP address:
 
 ```php
-$ip = '63.140.250.97';
-$CountryCode = $IP2Country->resolve($ip);
-echo 'Country Code: '.$countryCode;
+
+    $ipAddress_1='2a00:1450:4007:816::2004';
+    $ipAddress_2='37.140.250.97';
+    $ipAddress_3='2001:41d0:301::21';
+    $ipAddress_4='216.58.201.228';
+    $ipAddress_5='188.165.53.185';
+    $ipAddress_6='10.10.201.12';
+
+    echo '<pre>';
+    echo $IP2Country->resolve($ipAddress_1).PHP_EOL;
+    echo $IP2Country->resolve($ipAddress_2).PHP_EOL;
+    echo $IP2Country->resolve($ipAddress_3).PHP_EOL;
+    echo $IP2Country->resolve($ipAddress_4).PHP_EOL;
+    echo $IP2Country->resolve($ipAddress_5).PHP_EOL;
+    echo $IP2Country->resolve($ipAddress_6).PHP_EOL;
+
 ```
 
 ### Retrieving Country name:
@@ -48,38 +65,38 @@ So, to retrieve the country name (and much more), you must instantiate the "Worl
 and pass the result of the previous command as follows:
 
 ```php
-$ip = '63.140.250.97';
-$CountryName ='n/a';
-$CountryCode = $IP2Country->resolve($ip);
-if(!$IP2Country->isReservedIP()) //isReservedIP() method called with no argument
-{
-  require_once 'WorldCountriesDatas.php';
-  $DataProvider = new \Iriven\WorldCountriesDatas();
-  $CountryName = $DataProvider->getCountryName($CountryCode);
-}
-```
-or as follows:
 
-```php
-$ip = '63.140.250.97';
 $CountryName ='n/a';
-if(!$IP2Country->isReservedIP($ip))  //isReservedIP() method called with $ip as argument
+$CountryCode = $IP2Country->resolve($ipAddress);
+if(!$IP2Country->isReservedAddress($ipAddress))
 {
-  $CountryCode = $IP2Country->resolve($ip);
   require_once 'WorldCountriesDatas.php';
   $DataProvider = new \Iriven\WorldCountriesDatas();
   $CountryName = $DataProvider->getCountryName($CountryCode);
 }
+
 ```
 
 ### Updating GeoIP datas:
 
 ```php
-$IP2Country->Admin()->updateDatabase();
+
+require __DIR__ . '/vendor/autoload.php';
+
+try
+{
+    $IP2CountryBackend = new \geolocation\GeoIP2CountryServer();
+    $IP2CountryBackend->updateDatabase();
+
+} catch (\Throwable $th) {
+    trigger_error($th->getMessage(), E_USER_ERROR);
+}
+
 /*
-* NOTE: calling the Admin() method help enter in edit Mode;
-* the command: $IP2Country->updateDatabase(); will have no effect
+* NOTE: In order to encourage people to support this project, database update modules are reserved for donors only and are not included in this repo.
+* Any donor will receive in return a complete version of this software, with the possibility of updating the GEOIP database as desired.
 */
+
 ```
 
 ### Compatibility:
@@ -104,13 +121,12 @@ If this project help you reduce time to develop, you can give me a cup of coffee
 
 ## Acknowledgments
 
-* This project uses GeoIp data by Software77, available from [Here](http://software77.net/geo-ip)
+* This project uses GeoIp data by ICANN, available from [Here](https://www.icann.org)
 
 ## Disclaimer
 
 If you use this library in your project please add a backlink to this page by this code.
 
 ```html
-
-<a href="https://github.com/geolocation/GeoIPCountry" target="_blank">This Project Uses Alfred's TCHONDJO GeoIPCountry PHP Library.</a>
+<a href="https://github.com/iriven/GeoIP2Country" target="_blank">This Project Uses Alfred's TCHONDJO GeoIP2Country PHP Library.</a>
 ```
