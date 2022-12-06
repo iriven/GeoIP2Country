@@ -19,13 +19,14 @@ intervention (for donors only).
 - A repository based on statistical data from ICANN (Internet Corporation for Assigned Names and Numbers)
 
 #### NOTE:
-**In order to encourage people to support this project, database update modules are reserved to
+**In order to encourage people to support this project, database update components are reserved to
 donors only and are not included in this repo. Any donor will receive in return a complete version of this software,
-with the possibility of updating the GEOIP database as desired.**
+which help them gain to make their GEOIP database stay up to date.**
 
 ## Requirements
 
-pdo_sqlite, zlib, php_curl (for data update)
+- pdo_sqlite (runtime queries)
+- php_curl (for data update)
 
 ## Usage:
 
