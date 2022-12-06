@@ -7,8 +7,21 @@ A PHP IP Address Geolocation library to help you identify visitors geographical 
 This component is Build with an eye to keeping it as lightweight and lookups as fast as possible.
 And there are no external requests being made during runtime. So, if you need to get your website visitor's
 country and you don't want to use any API then this is the best solution for you.
-The project include methods to quickly update the files providing GEOIP DATA with the least possible human intervention (for donors only).
+The project include methods to quickly update the files providing GEOIP DATA with the least possible human
+intervention (for donors only).
 
+
+## What's new?
+
+- Complete refactoring and optimization of processing algorithms
+- A new database engine (combining security and efficiency)
+- A new component dedicated to updating the database?
+- A repository based on statistical data from ICANN (Internet Corporation for Assigned Names and Numbers) regularly updated
+
+#### NOTE:
+**In order to encourage people to support this project, database update modules are reserved to
+donors only and are not included in this repo. Any donor will receive in return a complete version of this software,
+with the possibility of updating the GEOIP database as desired.**
 
 ## Requirements
 
