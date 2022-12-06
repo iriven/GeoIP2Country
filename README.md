@@ -1,4 +1,4 @@
-# PHP GeoIP2Country PRO
+# PHP GeoIP2Country PRO (v2.0.2)
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://github.com/geolocation/GeoIP2Country/blob/master/LICENSE)
