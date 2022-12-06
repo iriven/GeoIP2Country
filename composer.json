@@ -1,0 +1,21 @@
+{
+    "name": "atchondjo/geoip",
+    "description": "A lightweight but powerful and secure PHP session Class",
+    "minimum-stability": "stable",
+    "keywords": ["geoip", "geolocation", "ip2country", "ipaddress", "php"],
+    "license": "proprietary",
+    "authors": [
+        {
+        "name": "Alfred TCHONDJO",
+        "email": "contact.atchondjo@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"geolocation\\": "src/"}
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-pdo_sqlite": "*",
+        "ext-curl": "*"
+    }
+}

@@ -1,0 +1,7 @@
+vendor/
+core/
+index.*
+*download*
+*update*
+*server.*
+*admin*
