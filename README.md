@@ -1,6 +1,6 @@
 # PHP GeoIP2Country PRO (v2.0.4)
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=ZCGRGGSB4XS4W)
 [![Build Status](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/badges/build.png?b=master)](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/?branch=master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
@@ -26,7 +26,7 @@ intervention (for donors only).
 repository as they are for donors only. Thus any donor will receive a full copy of this software,
 including the component that will help him to make his GEOIP database stay up to date.**
 
-**Donate here:** [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
+**Donate here:** [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=ZCGRGGSB4XS4W)
 
 
 ## Requirements
@@ -138,7 +138,7 @@ This project is licensed under the GNU General Public License V3 - see the [LICE
 
 If this project help you reduce time to develop, you can give me a cup of coffee :)
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=ZCGRGGSB4XS4W)
 
 ## Acknowledgments
 
