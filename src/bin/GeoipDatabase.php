@@ -2,17 +2,13 @@
 
 namespace geolocation\bin;
 
-use \PDO;
-use \SplFileInfo ;
-use \Throwable;
-
 class GeoipDatabase
 {
     const DS = DIRECTORY_SEPARATOR;
     /**
      * Database instance
      *
-     * @var PDO
+     * @var \PDO
      */
     private $oPDOInstance;
     /**
@@ -31,25 +27,24 @@ class GeoipDatabase
         try
         {
             if (!extension_loaded('pdo_sqlite')) {
-                throw new Throwable(
+                throw new \Throwable(
                     sprintf(
                         'The PHP `%s` extension is required. Please enable it before running this program !',
                         strtoupper('pdo_sqlite'))
                 );
             }
             $aOptions = [
-                    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_EMULATE_PREPARES   => false,
+                    \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+                    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+                    \PDO::ATTR_EMULATE_PREPARES   => false,
                 ];
-            $this->oPDOInstance = new PDO($this->genDsn($database), null, null, $aOptions);
+            $this->oPDOInstance = new \PDO($this->genDsn($database), null, null, $aOptions);
             $this->initialize();
-        } catch (Throwable $th) {
+        } catch (\Throwable $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         return $this->oPDOInstance;
     }
-
     /**
      * Create Database tables structure.
      *
@@ -77,7 +72,6 @@ class GeoipDatabase
         }
         return $this;
     }
-
     /**
      * Generate PDO SQLite3 DSN
      *
@@ -91,20 +85,19 @@ class GeoipDatabase
             $destination = rtrim(dirname(__DIR__), self::DS);
             if (!is_writeable($destination))
             {
-                throw new Throwable(sprintf('The required destination path is not writable: `%s`', $destination));
+                throw new \Throwable(sprintf('The required destination path is not writable: `%s`', $destination));
             }
-            $info = new SplFileInfo($database);
+            $info = new \SplFileInfo($database);
             $dbName= $info->getFilename();
             $dbSuffix='.sqlite';
             if (substr_compare(strtolower($dbName), $dbSuffix, -strlen($dbSuffix)) !== 0) { $dbName .= $dbSuffix ; }
-        } catch (Throwable $th) {
+        } catch (\Throwable $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         $destination .= self::DS.'data';
         if (!is_dir($destination)) { mkdir($destination, '0755', true); }
         return 'sqlite:'.realpath($destination).self::DS.$dbName ;
     }
-
     /**
      * Get the table list in the database
      *
@@ -117,7 +110,7 @@ class GeoipDatabase
             $command = 'SELECT `name` FROM `sqlite_master` WHERE `type` = \'table\' ORDER BY name';
             $statement = $this->oPDOInstance->query($command);
             $tables = [];
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $statement->fetch(\PDO::FETCH_ASSOC)) {
                 $tables[] = $row['name'];
             }
             return $tables;
@@ -125,7 +118,6 @@ class GeoipDatabase
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
     }
-
     /**
      * Retrieve Column(s) value from given table
      *
@@ -147,7 +139,6 @@ class GeoipDatabase
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
     }
-
     /**
      * Return Country code from given IP address (converted to integer)
      *
@@ -165,7 +156,7 @@ class GeoipDatabase
             $sCommand .= 'ORDER BY start DESC LIMIT 1';
             $statement = $this->oPDOInstance->prepare(sprintf($sCommand, $ipVersion)) ;
             $statement->execute([':start' => $start ]) ;
-            $row = $statement->fetch(PDO::FETCH_OBJ) ;
+            $row = $statement->fetch(\PDO::FETCH_OBJ) ;
             if (is_bool($row) && $row === false)
             {
                 $row = new \stdClass();
@@ -177,7 +168,6 @@ class GeoipDatabase
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
     }
-
     /**
      * Empty a given list of database tables
      *
@@ -201,7 +191,6 @@ class GeoipDatabase
             trigger_error('Statement failed: ' . $th->getMessage(), E_USER_ERROR);
         }
     }
-
     /**
      * Insert data into database
      *
@@ -238,7 +227,6 @@ class GeoipDatabase
         if (!$this->transactionCounter++) {return $this->oPDOInstance->beginTransaction();}
         return $this->transactionCounter >= 0;
     }
-
     /**
      * Commit PDO transaction changes
      *
@@ -249,7 +237,6 @@ class GeoipDatabase
         if (!--$this->transactionCounter) {return $this->oPDOInstance->commit();}
         return $this->transactionCounter >= 0;
     }
-
     /**
      * Rollback PDO transaction, Recognize mistake and roll back changes
      *
@@ -264,5 +251,4 @@ class GeoipDatabase
         $this->transactionCounter = 0;
         return false;
     }
-
 }

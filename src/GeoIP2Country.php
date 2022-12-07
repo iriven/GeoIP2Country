@@ -4,7 +4,6 @@ namespace geolocation;
 
 use \geolocation\bin\GeoipDatabase;
 use \geolocation\bin\GeoipNetwork;
-
 class GeoIP2Country
 {
     /**
@@ -13,14 +12,12 @@ class GeoIP2Country
      * @var GeoipDatabase
     **/
     private $oDBInstance=null;
-
     /**
      * Network tools class instance
      *
      * @var GeoipNetwork
     **/
     private $oNetwork=null;
-
     /**
      * Class Constructor
      *
@@ -32,7 +29,6 @@ class GeoIP2Country
         $this->oNetwork = new GeoipNetwork();
         return $this;
     }
-
     /**
      * Retrieve country code from given IP address
      *
@@ -46,7 +42,6 @@ class GeoIP2Country
         $start = $this->oNetwork->ip2Integer($ipAddress);
         return $this->oDBInstance->fetch($start, $ipVersion);
     }
-
     /**
      * @param mixed|null $ipAddress
      * @return bool
@@ -57,6 +52,4 @@ class GeoIP2Country
         $countryCode = $this->resolve($ipAddress);
         return !$countryCode || strcasecmp($countryCode, 'ZZ') == 0 ;
     }
-
-
 }

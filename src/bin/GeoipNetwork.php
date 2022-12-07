@@ -1,24 +1,23 @@
 <?php
 
 namespace geolocation\bin;
-
-use \Throwable;
-
 class GeoipNetwork
 {
-
     /**
      * @var string $ipAddress
     **/
     private $ipAddress=null;
-
-    public function __construct($ipAddress=null)
+    /**
+     * Class constructor.
+     *
+     * @param string $ipAddress
+     */
+    public function __construct(string $ipAddress=null)
     {
         $ipAddress || $ipAddress = $this->getIPAddress();
         $this->validateAddress($ipAddress);
         $this->ipAddress = $ipAddress;
     }
-
     /**
      * Auto Get the current visitor IP Address
      * @return string
@@ -41,7 +40,6 @@ class GeoipNetwork
         }
         return $ipAddress?:'0.0.0.0';
     }
-
     /**
      * If IPV6, Returns the IP in it's fullest format.
      * @example
@@ -68,7 +66,6 @@ class GeoipNetwork
         }
         return $ipAddress;
     }
-
     /**
      * Convert both IPV4 and IPv6 address to int|bigint
      *
@@ -110,15 +107,14 @@ class GeoipNetwork
                     $decimal = ltrim($decimal, '0');
                     break;
                 default:
-                    throw new Throwable($ipAddress.' is not a valid IP address');
+                    throw new \Throwable($ipAddress.' is not a valid IP address');
                     break;
             endswitch;
-        } catch (Throwable $th) {
+        } catch (\Throwable $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         return $decimal;
     }
-
     /**
      * Convert an IP address from decimal format to presentation format
      *
@@ -150,7 +146,6 @@ class GeoipNetwork
             $ipAddress = strtoupper($ipAddress);
         return $compress? $ipAddress : $this->expandAddress($ipAddress);
     }
-
     /**
      * Check IP address validity
      *
@@ -162,14 +157,13 @@ class GeoipNetwork
         try
         {
             if (!filter_var($ipAddress, FILTER_VALIDATE_IP, [FILTER_FLAG_IPV4|FILTER_FLAG_IPV6])) {
-                throw new Throwable('Invalid IP given');
+                throw new \Throwable('Invalid IP given');
             }
-        } catch (Throwable $th) {
+        } catch (\Throwable $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         return $ipAddress;
     }
-
     /**
      * @param $ipAddress
      * @return null|string
@@ -187,7 +181,6 @@ class GeoipNetwork
         }
         return null;
     }
-
     /**
      * Get IP version of given address
      *
@@ -202,10 +195,8 @@ class GeoipNetwork
             $ipAddress = $this->expandAddress($ipAddress);
             if (strpos($ipAddress, ':') !== false) {return 6;}
             return 4;
-        } catch (Throwable $th) {
+        } catch (\Throwable $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
     }
-
-
 }
