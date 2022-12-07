@@ -53,7 +53,7 @@ class GeoipDatabase
     /**
      * Create Database tables structure.
      *
-     * @return void
+     * @return GeoipDatabase
      */
     private function initialize()
     {
@@ -135,7 +135,7 @@ class GeoipDatabase
      */
     public function fetchAll(string $sTable, array $columns = [])
     {
-        $columns || $columns = '*';
+        !empty($columns) || $columns = '*';
         if (is_array($columns)) { $columns = implode('`, `', $columns); }
         try
         {
@@ -182,11 +182,11 @@ class GeoipDatabase
      * Empty a given list of database tables
      *
      * @param array $tablesList
-     * @return $this
+     * @return void
      */
     public function flush(array $tablesList=[])
     {
-        $tablesList || $tablesList = $this->showTables();
+        !empty($tablesList) || $tablesList = $this->showTables();
         is_array($tablesList) || $tablesList = [$tablesList];
         try
         {
@@ -197,7 +197,6 @@ class GeoipDatabase
                 }
                 $this->oPDOInstance->query('VACUUM');
             endif;
-            return $this;
         } catch (\PDOException $th) {
             trigger_error('Statement failed: ' . $th->getMessage(), E_USER_ERROR);
         }
@@ -232,7 +231,7 @@ class GeoipDatabase
     /**
      * Begin PDO transaction, turning off autocommit
      *
-     * @return void
+     * @return bool
      */
     public function beginTransaction()
     {
@@ -243,7 +242,7 @@ class GeoipDatabase
     /**
      * Commit PDO transaction changes
      *
-     * @return void
+     * @return bool
      */
     public function commit()
     {
@@ -254,7 +253,7 @@ class GeoipDatabase
     /**
      * Rollback PDO transaction, Recognize mistake and roll back changes
      *
-     * @return void
+     * @return bool
      */
     public function rollback()
     {
