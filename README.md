@@ -81,7 +81,7 @@ try
 
 Because one of my publications already deals with the recovery of a country's name from its ISO code.
 I chose in this project to limit myself to the only search of the country's ALPHA2 ISO code from a given ip address.
-So, to retrieve the country name (and much more), you must instantiate the "WorldCountriesDatas" class available from [HERE](https://github.com/geolocation/WorldCountriesDatas),
+So, to retrieve the country name (and much more), you must instantiate the "WorldCountriesDatas" class available from [HERE](https://github.com/iriven/WorldCountriesDatas),
 and pass the result of the previous command as follows:
 
 ```php
@@ -113,10 +113,9 @@ try
 }
 
 /*
-* NOTE: In order to encourage people to support this project, database update
-* modules are reserved to donors only and are not included in this repo.
-* Any donor will receive in return a complete version of this software,
-* with the possibility of updating the GEOIP database as desired.
+* NOTE: In order to encourage people to support this project, database update components are not included in this
+* repository as they are for donors only. Thus any donor will receive a full copy of this software,
+* including the component that will help him to make his GEOIP database stay up to date.
 */
 
 ```
