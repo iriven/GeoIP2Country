@@ -127,7 +127,7 @@ try
 
 ## Authors
 
-* **Alfred TCHONDJO** - *Project Initiator* - [geolocation France](https://www.facebook.com/Tchalf)
+* **Alfred TCHONDJO** - *Project Initiator* - [Iriven France](https://www.facebook.com/Tchalf)
 
 ## License
 
