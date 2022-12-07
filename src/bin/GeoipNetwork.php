@@ -25,20 +25,18 @@ class GeoipNetwork
      */
     public function getIPAddress()
     {
-        $ipAddress = null;
-        $serverIPKeys =['HTTP_X_COMING_FROM', 'HTTP_FORWARDED', 'HTTP_FORWARDED_FOR', 'HTTP_X_CLUSTER_CLIENT_IP',
-                        'HTTP_X_FORWARDED', 'HTTP_VIA', 'HTTP_CLIENT_IP','HTTP_X_FORWARDED_FOR','REMOTE_ADDR'];
-        foreach ($serverIPKeys as $IPKey):
-            if (array_key_exists($IPKey, $_SERVER)) {
-                if (!strlen($_SERVER[$IPKey])) { continue; }
-                $ipAddress = $_SERVER[$IPKey];
+        $ipAddress = '';
+        $ipKeys =['HTTP_X_COMING_FROM', 'HTTP_FORWARDED', 'HTTP_FORWARDED_FOR', 'HTTP_X_CLUSTER_CLIENT_IP',
+                'HTTP_X_FORWARDED', 'HTTP_VIA', 'HTTP_CLIENT_IP','HTTP_X_FORWARDED_FOR','REMOTE_ADDR'];
+        foreach ($ipKeys as $key):
+            if (array_key_exists($key, $_SERVER) && !empty($_SERVER[$key])):
+                $ipAddress = $_SERVER[$key];
+                if (($commaPos = strpos($ipAddress, ',')) > 0):
+                    $ipAddress = substr($ipAddress, 0, ($commaPos - 1));
+                endif;
                 break;
-            }
+            endif;
         endforeach;
-        if (!is_null($ipAddress) && ($commaPos = strpos($ipAddress, ',')) > 0)
-        {
-            $ipAddress = substr($ipAddress, 0, ($commaPos - 1));
-        }
         return $ipAddress?:'0.0.0.0';
     }
     /**
