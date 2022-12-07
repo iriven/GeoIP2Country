@@ -28,9 +28,7 @@ class GeoipDatabase
         {
             if (!extension_loaded('pdo_sqlite')) {
                 throw new \Throwable(
-                    sprintf(
-                        'The PHP `%s` extension is required. Please enable it before running this program !',
-                        strtoupper('pdo_sqlite'))
+                    'The PHP PDO_SQLite extension is required. Please enable it before running this program !'
                 );
             }
             $aOptions = [
@@ -85,7 +83,7 @@ class GeoipDatabase
             $destination = rtrim(dirname(__DIR__), self::DS);
             if (!is_writeable($destination))
             {
-                throw new \Throwable(sprintf('The required destination path is not writable: `%s`', $destination));
+                throw new \Throwable('The required destination path is not writable: '.$destination);
             }
             $info = new \SplFileInfo($database);
             $dbName= $info->getFilename();
@@ -198,7 +196,7 @@ class GeoipDatabase
      * @param integer $end
      * @param integer $ipVersion
      * @param string $country
-     * @return integer
+     * @return void
      */
     public function insert(int $start, int $end, int $ipVersion, string $country)
     {
@@ -212,7 +210,6 @@ class GeoipDatabase
                 ':end'     => $end,
                 ':country' => $country
             ]) ;
-            return $this->oPDOInstance->lastInsertId();
         } catch (\PDOException $th) {
             trigger_error('Statement failed: ' . $th->getMessage(), E_USER_ERROR);
         }
