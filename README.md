@@ -1,5 +1,4 @@
 # PHP GeoIP2Country PRO (v2.0.4)
-=======
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
 [![Build Status](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/badges/build.png?b=master)](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/build-status/master)
