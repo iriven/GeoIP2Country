@@ -1,6 +1,7 @@
 <?php
 
 namespace geolocation\bin;
+
 class GeoipNetwork
 {
     /**
@@ -83,70 +84,6 @@ class GeoipNetwork
         return ip2long($ipAddress);
     }
     /**
-     * Convert both IPV4 and IPv6 address to a long|binary number
-     * @param $ipAddress
-     * @return mixed|string
-     */
-    public function ip2long (string $ipAddress)
-    {
-        $ipAddress || $ipAddress = $this->getIPAddress();
-        $decimal = null;
-        try
-        {
-            $ipAddress = $this->expandAddress($ipAddress);
-            switch ($ipAddress):
-                case (strpos($ipAddress, '.') !== false):
-                    $decimal .= ip2long($ipAddress);
-                    break;
-                case (strpos($ipAddress, ':') !== false):
-                    $network = inet_pton($ipAddress);
-                    $parts   = unpack('C*', $network);
-                    foreach ($parts as &$byte):
-                        $decimal.= str_pad(decbin($byte), 8, '0', STR_PAD_LEFT);
-                    endforeach;
-                    $decimal = ltrim($decimal, '0');
-                    break;
-                default:
-                    throw new \Throwable($ipAddress.' is not a valid IP address');
-                    break;
-            endswitch;
-        } catch (\Throwable $th) {
-            trigger_error($th->getMessage(), E_USER_ERROR);
-        }
-        return $decimal;
-    }
-    /**
-     * Convert an IP address from decimal format to presentation format
-     *
-     * @param $decimal
-     * @param bool $compress
-     * @return mixed|string
-     */
-    public function long2ip($decimal, $compress = true)
-    {
-        $ipAddress = null;
-        if (preg_match('/[.:]/', $decimal))
-        {return strtoupper($decimal);}
-        switch ($decimal):
-            case (strlen($decimal) <= 32):
-                $ipAddress .= long2ip($decimal);
-                break;
-            default:
-                $pad = 128 - strlen($decimal);
-                for ($i = 1; $i <= $pad; $i++)
-                { $decimal = '0'.$decimal; }
-                for ($bits = 0; $bits <= 7; $bits++)
-                {
-                    $binPart = substr($decimal,($bits*16),16);
-                    $ipAddress .= dechex(bindec($binPart)).':';
-                }
-                $ipAddress = inet_ntop(inet_pton(substr($ipAddress,0,-1)));
-                break;
-        endswitch;
-            $ipAddress = strtoupper($ipAddress);
-        return $compress? $ipAddress : $this->expandAddress($ipAddress);
-    }
-    /**
      * Check IP address validity
      *
      * @param string $ipAddress
@@ -163,23 +100,6 @@ class GeoipNetwork
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         return $ipAddress;
-    }
-    /**
-     * @param $ipAddress
-     * @return null|string
-     */
-    public function getPrefix($ipAddress)
-    {
-        try
-        {
-            if(!preg_match('/[.:]/', $ipAddress)) {$ipAddress = $this->long2ip($ipAddress, false);}
-            $this->validateAddress($ipAddress);
-            $delimiter = (strpos($ipAddress,':')===false)? '.' : ':';
-            return current(explode($delimiter, $ipAddress));
-        } catch (\Throwable $th) {
-            trigger_error($th->getMessage(), E_USER_ERROR);
-        }
-        return null;
     }
     /**
      * Get IP version of given address
