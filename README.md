@@ -149,5 +149,5 @@ If this project help you reduce time to develop, you can give me a cup of coffee
 If you use this library in your project please add a backlink to this page by this code.
 
 ```html
-<a href="https://github.com/iriven/GeoIP2Country" target="_blank">This Project Uses Alfred's TCHONDJO GeoIP2Country PHP Library.</a>
+<a href="https://github.com/iriven/GeoIP2Country" target="_blank">This Project Uses Alfred's TCHONDJO GeoIP2Country PRO.</a>
 ```
