@@ -31,8 +31,8 @@ including the component that will help him to make his GEOIP database stay up to
 
 ## Requirements
 
-- pdo_sqlite (runtime queries)
-- php_curl (for data update)
+- pdo_sqlite (runtime deps)
+- php_curl (for update only)
 
 ## Usage:
 
