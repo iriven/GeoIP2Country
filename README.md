@@ -113,10 +113,9 @@ try
 }
 
 /*
-* NOTE: In order to encourage people to support this project, database update
-* modules are reserved to donors only and are not included in this repo.
-* Any donor will receive in return a complete version of this software,
-* with the possibility of updating the GEOIP database as desired.
+* NOTE: In order to encourage people to support this project, database update components are not included in this
+* repository as they are for donors only. Thus any donor will receive a full copy of this software,
+* including the component that will help him to make his GEOIP database stay up to date.
 */
 
 ```
