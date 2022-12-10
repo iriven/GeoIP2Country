@@ -1,8 +1,8 @@
 {
-    "name": "atchondjo/geoip",
-    "description": "A lightweight but powerful and secure PHP session Class",
+    "name": "atchondjo/GeoIP2Country",
+    "description": "A lightweight but powerful IP address lookup database solution to determine visitors country",
     "minimum-stability": "stable",
-    "keywords": ["geoip", "geolocation", "ip2country", "ipaddress", "php"],
+    "keywords": ["geoip", "geolocation", "ip2country", "ip2location", "ipaddress", "php"],
     "license": "proprietary",
     "authors": [
         {
@@ -11,7 +11,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {"geolocation\\": "src/"}
+        "psr-4": {"iriven\\": "src/"}
     },
     "require": {
         "php": ">=7.4",

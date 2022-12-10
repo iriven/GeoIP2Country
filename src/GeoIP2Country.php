@@ -1,9 +1,9 @@
 <?php
 
-namespace geolocation;
+namespace iriven;
 
-use \geolocation\bin\GeoipDatabase;
-use \geolocation\bin\GeoipNetwork;
+use \iriven\bin\GeoipDatabase;
+use \iriven\bin\GeoipNetwork;
 class GeoIP2Country
 {
     /**

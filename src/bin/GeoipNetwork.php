@@ -1,6 +1,6 @@
 <?php
 
-namespace geolocation\bin;
+namespace iriven\bin;
 
 class GeoipNetwork
 {
@@ -60,7 +60,7 @@ class GeoipNetwork
                 $ipAddress = substr(preg_replace('/([A-f0-9]{4})/', "$1:", $hex['hex']), 0, -1);
                 $ipAddress = strtoupper($ipAddress);
             }
-        } catch (\Throwable $th) {
+        } catch (\UnexpectedValueException $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         return $ipAddress;
@@ -92,9 +92,9 @@ class GeoipNetwork
         try
         {
             if (!filter_var($ipAddress, FILTER_VALIDATE_IP, [FILTER_FLAG_IPV4|FILTER_FLAG_IPV6])) {
-                throw new \Throwable('Invalid IP given');
+                throw new \UnexpectedValueException('Invalid IP given: '.$ipAddress);
             }
-        } catch (\Throwable $th) {
+        } catch (\UnexpectedValueException $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         return $ipAddress;
@@ -113,7 +113,7 @@ class GeoipNetwork
             $ipAddress = $this->expandAddress($ipAddress);
             if (strpos($ipAddress, ':') !== false) {return 6;}
             return 4;
-        } catch (\Throwable $th) {
+        } catch (\UnexpectedValueException $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
     }
