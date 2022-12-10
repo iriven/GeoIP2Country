@@ -52,8 +52,6 @@ composer require atchondjo/geoip2country
 
 ## Usage:
 
-These instructions will get you a copy of the project up and running on your local machine.
-
 ### Installation And Initialisation (using Composer autoload)
 
 To utilize C, first import and require GeoIP2Country.php file in your project.
