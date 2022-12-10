@@ -1,6 +1,6 @@
 <?php
 
-namespace geolocation\bin;
+namespace iriven\bin;
 
 class GeoipDatabase
 {
@@ -26,11 +26,11 @@ class GeoipDatabase
     {
         try
         {
-            if (!extension_loaded('pdo_sqlite')) {
+            if (!extension_loaded('pdo_sqlite')):
                 throw new \Throwable(
                     'The PHP PDO_SQLite extension is required. Please enable it before running this program !'
                 );
-            }
+            endif;
             $aOptions = [
                     \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
                     \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
@@ -61,8 +61,8 @@ class GeoipDatabase
                     `end` BIGINT UNSIGNED ,
                     `country` VARCHAR(2)
                 )',
-            'CREATE UNIQUE INDEX IF NOT EXISTS idx_ipv4Range ON ipv4Range(start, end)',
-            'CREATE UNIQUE INDEX IF NOT EXISTS idx_ipv6Range ON ipv6Range(start, end)'
+            'CREATE UNIQUE INDEX IF NOT EXISTS `idx_ipv4Range` ON `ipv4Range`(`start`, `end`)',
+            'CREATE UNIQUE INDEX IF NOT EXISTS `idx_ipv6Range` ON `ipv6Range`(`start`, `end`)'
             ];
         foreach ($aCommands as $command)
         {
@@ -83,13 +83,13 @@ class GeoipDatabase
             $destination = rtrim(dirname(__DIR__), self::DS);
             if (!is_writeable($destination))
             {
-                throw new \Throwable('The required destination path is not writable: '.$destination);
+                throw new \RuntimeException('The required destination path is not writable: '.$destination);
             }
             $info = new \SplFileInfo($database);
             $dbName= $info->getFilename();
             $dbSuffix='.sqlite';
             if (substr_compare(strtolower($dbName), $dbSuffix, -strlen($dbSuffix)) !== 0) { $dbName .= $dbSuffix ; }
-        } catch (\Throwable $th) {
+        } catch (\RuntimeException $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         $destination .= self::DS.'data';
