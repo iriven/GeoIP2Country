@@ -27,9 +27,8 @@ class GeoipDatabase
         try
         {
             if (!extension_loaded('pdo_sqlite')):
-                throw new \Throwable(
-                    'The PHP PDO_SQLite extension is required. Please enable it before running this program !'
-                );
+                $msg = 'The PHP PDO_SQLite extension is required. Please enable it before running this program !';
+                throw new \Throwable($msg);
             endif;
             $aOptions = [
                     \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
@@ -81,15 +80,15 @@ class GeoipDatabase
         $database || $database='Geoip.db.sqlite';
         try {
             $destination = rtrim(dirname(__DIR__), self::DS);
-            if (!is_writeable($destination))
-            {
-                throw new \RuntimeException('The required destination path is not writable: '.$destination);
+            if (!is_writeable($destination)) {
+                $msg = 'The required destination path is not writable: '.$destination;
+                throw new \Throwable($msg);
             }
             $info = new \SplFileInfo($database);
             $dbName= $info->getFilename();
             $dbSuffix='.sqlite';
             if (substr_compare(strtolower($dbName), $dbSuffix, -strlen($dbSuffix)) !== 0) { $dbName .= $dbSuffix ; }
-        } catch (\RuntimeException $th) {
+        } catch (\Throwable $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         $destination .= self::DS.'data';
