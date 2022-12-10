@@ -35,13 +35,28 @@ However, other users can still use the software as published here. Only the data
 - pdo_sqlite (runtime deps)
 - php_curl (for update only)
 
+
+## Installation:
+
+These instructions will get you a copy of the project up and running on your local machine.
+there are two options:
+
+- [x] Copy GeoIP2Country files into a specific folder of your project
+- [x] Using Composer installer(Recommended) by typing the following command:
+
+```php
+
+composer require atchondjo/geoip2country
+
+```
+
 ## Usage:
 
 These instructions will get you a copy of the project up and running on your local machine.
 
 ### Installation And Initialisation (using Composer autoload)
 
-To utilize GeoIP2Country, first import and require GeoIP2Country.php file in your project.
+To utilize C, first import and require GeoIP2Country.php file in your project.
 
 ```php
 
@@ -49,7 +64,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 try
 {
-    $IP2Country = new \iriven\GeoIP2Country();
+    $IP2Country = new iriven\GeoIP2Country();
 
 } catch (\Throwable $th) {
     trigger_error($th->getMessage(), E_USER_ERROR);
@@ -106,7 +121,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 try
 {
-    $IP2CountryBackend = new \iriven\GeoIP2CountryServer();
+    $IP2CountryBackend = new iriven\GeoIP2CountryServer();
     $IP2CountryBackend->updateDatabase();
 
 } catch (\Throwable $th) {

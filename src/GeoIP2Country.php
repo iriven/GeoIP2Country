@@ -2,8 +2,8 @@
 
 namespace iriven;
 
-use \iriven\bin\GeoipDatabase;
-use \iriven\bin\GeoipNetwork;
+use iriven\bin\GeoipDatabase;
+use iriven\bin\GeoipNetwork;
 class GeoIP2Country
 {
     /**

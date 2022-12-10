@@ -220,7 +220,7 @@ class GeoipDatabase
      */
     public function beginTransaction()
     {
-        if (!$this->transactionCounter++) {return $this->oPDOInstance->beginTransaction(); }
+        if (!$this->transactionCounter++) {return $this->oPDOInstance->beginTransaction();}
         return $this->transactionCounter >= 0;
     }
     /**
