@@ -36,12 +36,12 @@ However, other users can still use the software as published here. Only the data
 - php_curl (for update only)
 
 
-## Installation:
+## Installation And Initialisation :
 
 These instructions will get you a copy of the project up and running on your local machine.
 there are two options:
 
-- [x] Copy GeoIP2Country files into a specific folder of your project
+- [x] import(copy) GeoIP2Country files into a specific folder of your project
 - [x] Using Composer installer(Recommended) by typing the following command:
 
 ```php
@@ -50,11 +50,7 @@ composer require atchondjo/geoip2country
 
 ```
 
-## Usage:
-
-### Installation And Initialisation (using Composer autoload)
-
-To utilize C, first import and require GeoIP2Country.php file in your project.
+## Usage (using Composer autoloader):
 
 ```php
 
