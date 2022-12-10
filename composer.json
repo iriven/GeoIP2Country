@@ -1,5 +1,5 @@
 {
-    "name": "atchondjo/GeoIP2Country",
+    "name": "atchondjo/geoip2country",
     "description": "A lightweight but powerful IP address lookup database solution to determine visitors country",
     "minimum-stability": "stable",
     "keywords": ["geoip", "geolocation", "ip2country", "ip2location", "ipaddress", "php"],
