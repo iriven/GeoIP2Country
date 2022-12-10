@@ -77,7 +77,7 @@ class GeoipDatabase
      */
     private function genDsn(string $database = null)
     {
-        $database || $database='Geoip.db.sqlite';
+        $database || $database = 'Geoip.db.sqlite';
         try {
             $destination = rtrim(dirname(__DIR__), self::DS);
             if (!is_writeable($destination)) {
@@ -85,15 +85,15 @@ class GeoipDatabase
                 throw new \Throwable($msg);
             }
             $info = new \SplFileInfo($database);
-            $dbName= $info->getFilename();
-            $dbSuffix='.sqlite';
+            $dbName = $info->getFilename();
+            $dbSuffix ='.sqlite';
             if (substr_compare(strtolower($dbName), $dbSuffix, -strlen($dbSuffix)) !== 0) { $dbName .= $dbSuffix ; }
         } catch (\Throwable $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
         $destination .= self::DS.'data';
         if (!is_dir($destination)) { mkdir($destination, '0755', true); }
-        return 'sqlite:'.realpath($destination).self::DS.$dbName ;
+        return 'sqlite:'.realpath($destination).self::DS.$dbName;
     }
     /**
      * Get the table list in the database
@@ -151,16 +151,16 @@ class GeoipDatabase
             $sCommand .= 'FROM `ipv%dRange` ';
             $sCommand .= 'WHERE `start` <= :start ';
             $sCommand .= 'ORDER BY start DESC LIMIT 1';
-            $statement = $this->oPDOInstance->prepare(sprintf($sCommand, $ipVersion)) ;
-            $statement->execute([':start' => $start ]) ;
-            $row = $statement->fetch(\PDO::FETCH_OBJ) ;
+            $statement = $this->oPDOInstance->prepare(sprintf($sCommand, $ipVersion));
+            $statement->execute([':start' => $start ]);
+            $row = $statement->fetch(\PDO::FETCH_OBJ);
             if (is_bool($row) && $row === false)
             {
                 $row = new \stdClass();
-                $row->end = 0 ;
+                $row->end = 0;
             }
-            if ($row->end < $start || !$row->country) { $row->country = 'ZZ' ; }
-            return $row->country ;
+            if ($row->end < $start || !$row->country) { $row->country = 'ZZ'; }
+            return $row->country;
         } catch (\PDOException $th) {
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
@@ -171,7 +171,7 @@ class GeoipDatabase
      * @param array $tablesList
      * @return void
      */
-    public function flush(array $tablesList=[])
+    public function flush(array $tablesList = [])
     {
         !empty($tablesList) || $tablesList = $this->showTables();
         is_array($tablesList) || $tablesList = [$tablesList];
@@ -185,7 +185,7 @@ class GeoipDatabase
                 $this->oPDOInstance->query('VACUUM');
             endif;
         } catch (\PDOException $th) {
-            trigger_error('Statement failed: ' . $th->getMessage(), E_USER_ERROR);
+            trigger_error('Statement failed: '.$th->getMessage(), E_USER_ERROR);
         }
     }
     /**
@@ -201,14 +201,14 @@ class GeoipDatabase
     {
         try
         {
-            $sQuery ='INSERT INTO `ipv%dRange` (`start`, `end`, `country`) values (:start, :end, :country)';
+            $sQuery = 'INSERT INTO `ipv%dRange` (`start`, `end`, `country`) values (:start, :end, :country)';
             $command = sprintf($sQuery, $ipVersion);
             $statement = $this->oPDOInstance->prepare($command);
             $statement->execute([
                 ':start'   => $start,
                 ':end'     => $end,
                 ':country' => $country
-            ]) ;
+            ]);
         } catch (\PDOException $th) {
             trigger_error('Statement failed: ' . $th->getMessage(), E_USER_ERROR);
         }
@@ -220,7 +220,7 @@ class GeoipDatabase
      */
     public function beginTransaction()
     {
-        if (!$this->transactionCounter++) {return $this->oPDOInstance->beginTransaction();}
+        if (!$this->transactionCounter++) {return $this->oPDOInstance->beginTransaction(); }
         return $this->transactionCounter >= 0;
     }
     /**
@@ -230,7 +230,7 @@ class GeoipDatabase
      */
     public function commit()
     {
-        if (!--$this->transactionCounter) {return $this->oPDOInstance->commit();}
+        if (!--$this->transactionCounter) {return $this->oPDOInstance->commit(); }
         return $this->transactionCounter >= 0;
     }
     /**
