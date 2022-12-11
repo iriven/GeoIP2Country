@@ -50,7 +50,7 @@ composer require atchondjo/geoip2country
 
 ```
 
-## Usage (using Composer autoloader):
+## Usage: (using Composer autoloader)
 
 ```php
 
@@ -107,7 +107,7 @@ if(!$IP2Country->isReservedAddress($ipAddress))
 
 ```
 
-### Updating GeoIP datas:
+### Updating GeoIP datas: (for Donors only)
 
 ```php
 
