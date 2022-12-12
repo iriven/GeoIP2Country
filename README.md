@@ -6,6 +6,10 @@
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://github.com/iriven/GeoIP2Country/blob/master/LICENSE)
 
+An IP address is only the beginning of endless possibilities, adventures and developments...
+
+## What's GeoIP2Country PRO?
+
 A PHP IP Address Geolocation library to help you identify visitors geographical location.
 This component is Build with an eye to keeping it as lightweight and lookups as fast as possible.
 And there are no external requests being made during runtime. So, if you need to get your website visitor's
@@ -13,8 +17,7 @@ country and you don't want to use any API then this is the best solution for you
 The project include methods to quickly update your GEOIP DATABASE with the least possible human
 intervention (for donors only).
 
-
-## What's new?
+## What's new in this release?
 
 - Complete refactoring and optimization of processing algorithms
 - A new database engine (combining security and efficiency)
