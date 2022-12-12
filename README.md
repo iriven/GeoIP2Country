@@ -99,7 +99,7 @@ try
 
 ```
 
-### Retrieving Country name:
+#### Retrieving Country name:
 
 Because one of my publications already deals with the recovery of a country's name from its ISO code.
 I chose in this project to limit myself to the only search of the country's ALPHA2 ISO code from a given ip address.
@@ -119,7 +119,7 @@ if(!$IP2Country->isReservedAddress($ipAddress))
 
 ```
 
-### Updating GeoIP datas: (for Donors only)
+#### Updating GeoIP datas: (for Donors only)
 
 ```php
 
@@ -142,7 +142,7 @@ try
 
 ```
 
-### Compatibility:
+## Compatibility:
 
 - [x] IPV4
 - [x] IPV6
