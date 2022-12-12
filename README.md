@@ -69,7 +69,7 @@ try
 
 ```
 
-### Getting Country code from given IP address:
+#### Getting Country code from given IP address:
 
 ```php
 
@@ -87,6 +87,15 @@ try
     echo $IP2Country->resolve($ipAddress_4).PHP_EOL;
     echo $IP2Country->resolve($ipAddress_5).PHP_EOL;
     echo $IP2Country->resolve($ipAddress_6).PHP_EOL;
+
+```
+
+#### Getting current visitor Country code (auto detect his IP address):
+
+```php
+
+    echo '<pre>';
+    echo $IP2Country->resolve().PHP_EOL;  /** resolve() method called without any argument */
 
 ```
 
