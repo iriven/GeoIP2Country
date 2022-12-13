@@ -150,7 +150,6 @@ try
 ## Authors
 
 * **Alfred TCHONDJO** - *Project Initiator* - [Iriven France](https://www.facebook.com/Tchalf)
-* <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="f9b8abdc-c8c5-493c-a19e-37c01ccfab77" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
 ## License
 
