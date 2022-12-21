@@ -38,9 +38,12 @@ class GeoIP2Country
     public function resolve(string $ipAddress= null): string
     {
         $ipAddress || $ipAddress = $this->oNetwork->getIPAddress();
-        $ipVersion = $this->oNetwork->ipVersion($ipAddress);
-        $start = $this->oNetwork->ip2Integer($ipAddress);
-        return $this->oDBInstance->fetch($start, $ipVersion);
+        if ($this->oNetwork->isIpAddress($ipAddress)):
+            $ipVersion = $this->oNetwork->ipVersion($ipAddress);
+            $start = $this->oNetwork->ip2Integer($ipAddress);
+            return $this->oDBInstance->fetch($start, $ipVersion);
+        endif;
+        return 'ZZ';
     }
     /**
      * @param mixed|null $ipAddress
