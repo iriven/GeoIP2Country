@@ -117,4 +117,20 @@ class GeoipNetwork
             trigger_error($th->getMessage(), E_USER_ERROR);
         }
     }
+
+    /**
+     * Check IP address validity
+     *
+     * @param string $ipAddress
+     * @return bool
+     */
+    public function isIpAddress(string $ipAddress)
+    {
+        $ipAddress || $ipAddress = $this->getIPAddress();
+        if (filter_var($ipAddress, FILTER_VALIDATE_IP, [FILTER_FLAG_IPV4|FILTER_FLAG_IPV6]) !== false):
+            return true;
+        endif;
+        return false;
+    }
+
 }

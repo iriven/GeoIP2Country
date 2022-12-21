@@ -24,12 +24,7 @@ class GeoipDatabase
      */
     public function __construct(string $database = null)
     {
-        try
-        {
-            if (!extension_loaded('pdo_sqlite')):
-                $msg = 'The PHP PDO_SQLite extension is required. Please enable it before running this program !';
-                throw new \Throwable($msg);
-            endif;
+        try {
             $aOptions = [
                     \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
                     \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
@@ -80,10 +75,6 @@ class GeoipDatabase
         $database || $database = 'Geoip.db.sqlite';
         try {
             $destination = rtrim(dirname(__DIR__), self::DS);
-            if (!is_writeable($destination)) {
-                $msg = 'The required destination path is not writable: '.$destination;
-                throw new \Throwable($msg);
-            }
             $info = new \SplFileInfo($database);
             $dbName = $info->getFilename();
             $dbSuffix ='.sqlite';
