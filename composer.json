@@ -2,12 +2,14 @@
     "name": "atchondjo/geoip2country",
     "description": "A lightweight but powerful IP address lookup database solution to determine visitors country",
     "minimum-stability": "stable",
-    "keywords": ["geoip", "geolocation", "ip2country", "ip2location", "ipaddress", "php"],
+    "homepage": "https://github.com/iriven/GeoIP2Country",
+    "keywords": ["geoip", "geolocation", "ip2country", "ip2location", "ip geolocation", "ipaddress", "php"],
     "license": "proprietary",
     "authors": [
         {
         "name": "Alfred TCHONDJO",
-        "email": "contact.atchondjo@gmail.com"
+        "email": "contact.atchondjo@gmail.com",
+        "homepage": "https://github.com/iriven/GeoIP2Country"
         }
     ],
     "autoload": {
@@ -19,3 +21,4 @@
         "ext-curl": "*"
     }
 }
+"ip2location", "ip2locationlite", "geolocation", "ip geolocation",

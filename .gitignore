@@ -13,6 +13,7 @@ ehthumbs.db
 
 # Folder config file
 Desktop.ini
+*backlog*
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
