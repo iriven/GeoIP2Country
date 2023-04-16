@@ -3,7 +3,7 @@
     "description": "A lightweight but powerful IP address lookup database solution to determine visitors country",
     "minimum-stability": "stable",
     "homepage": "https://github.com/iriven/GeoIP2Country",
-    "keywords": ["geoip", "geolocation", "ip2country", "ip2location", "ip geolocation", "ipaddress", "php"],
+    "keywords": ["geoip", "geolocation", "ip2country", "ip2location", "ip geolocation", "ipaddress", "ip2location lite", "php"],
     "license": "proprietary",
     "authors": [
         {
@@ -21,4 +21,3 @@
         "ext-curl": "*"
     }
 }
-"ip2location", "ip2locationlite", "geolocation", "ip geolocation",
