@@ -1,4 +1,4 @@
-# PHP GeoIP2Country PRO (v2.0.4)
+# PHP GeoIP2Country PRO (v2.0.6)
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=ZCGRGGSB4XS4W)
 [![Build Status](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/badges/build.png?b=master)](https://scrutinizer-ci.com/g/iriven/GeoIP2Country/build-status/master)
